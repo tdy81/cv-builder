@@ -1,58 +1,15 @@
 <script>
-    export let dataLangs;
-    export let showEdit;
-    export let showCollapse;
-
-    let newName= '';
-    let newPercent= '';
-
-    function addItem() {
-        dataLangs = [...dataLangs, {name: newName, percent: newPercent}];
-        newName = '';
-        newPercent = '';
-    }
-
-    function deleteItem(index) {
-        dataLangs.splice(index, 1);
-        dataLangs = dataLangs;
-    }
-
-    function editItem() {
-        showCollapse = !showCollapse;
-    }
+  export let langs;
 </script>
 
-<div>
-    <h2>Langues</h2>
-    {#if showEdit}
-    <button on:click={editItem}>
-        collapse
-    </button>
-    {/if}
-    
-    {#if showCollapse}
-    <div>
-
-    {#each dataLangs as item, index}
-    <div>
-        <div>{item.name}</div>
-        {#if showEdit}
-        <button class="btn-remove" on:click={ () => deleteItem(index) }>&#x2715</button>
-        {/if}
-    </div>
+{#if langs.length}
+<div class="mb-8">
+<div class="text-lg font-bold mb-2">Langues</div>
+  <div class="w-4 h-0.5 bg-black mb-4 theme-sep"></div>
+  <ul>
+    {#each langs as item, index}
+    <li>- {item.name}</li>
     {/each}
-
-    {#if showEdit}
-    <form on:submit|preventDefault={addItem}>
-        <div>
-            <label for="">Name</label>
-            <input type="text" bind:value={newName}>
-        </div>
-
-        <button type="submit">Add item</button>
-    </form>
-    {/if}
-
-    </div>
-    {/if}
+</ul>
 </div>
+{/if}

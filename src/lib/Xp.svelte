@@ -1,84 +1,18 @@
 <script>
     import { marked } from 'marked'
-    
-    export let dataXp;
-    export let showEdit;
-    export let showCollapse;
-
-    let newName= '';
-    let newPlace= '';
-    let newDate= '';
-    let newDesc= '';
-
-    function addItem() {
-        dataXp = [...dataXp, {name: newName, desc: newDesc, place: newPlace, date: newDate}];
-        newName = '';
-        newPlace = '';
-        newDate = '';
-        newDesc = '';
-    }
-
-    function deleteItem(index) {
-        dataXp.splice(index, 1);
-        dataXp = dataXp;
-    }
-
-    function editItem() {
-        showCollapse = !showCollapse;
-    }
+    export let xps;
 </script>
 
-<div>
-    <h2>Expérience</h2>
-    {#if showEdit}
-    <button on:click={editItem}>
-        collapse
-    </button>
-    {/if}
-    
-    {#if showCollapse}
-    <div>
-
-    {#each dataXp as item, index}
-    <div>
-        <h3>{item.name}</h3>
-        <div>{item.place}</div>
-        <div>{item.date}</div>
-        <div>{@html marked(item.desc)}</div>
-        {#if showEdit}
-        <button class="btn-remove" on:click={ () => deleteItem(index) }>&#x2715</button>
-        {/if}
-    </div>
+{#if xps.length}
+  <div>
+      <div class="text-lg font-bold mb-2">Expériences</div>
+      <div class="w-4 h-0.5 bg-black mb-4 theme-sep"></div>
+    {#each xps as item, index}
+      <div class="mb-8">
+        <div class="font-bold">{item.job}</div>
+        <div>{item.location} - {item.dateStart} à {item.dateEnd}</div>
+        <div class="whitespace-pre-wrap mt-2">{@html item.desc}</div>
+      </div>
     {/each}
-
-    {#if showEdit}
-    <form on:submit|preventDefault={addItem}>
-        <div>
-            <label for="">Name</label>
-            <input type="text" bind:value={newName}>
-        </div>
-
-        <div>
-            <label for="">Place</label>
-            <input type="text" bind:value={newPlace}>
-        </div>
-
-        <div>
-            <label for="">Date</label>
-            <input type="text" bind:value={newDate}>
-        </div>
-
-        <div>
-            <label for="">Desc ( - lorem ipsum... ) press Enter</label>
-            <textarea bind:value={newDesc}></textarea>
-        </div>
-
-        <button type="submit">Add item</button>
-    </form>
-    {/if}
-
-    </div>
-    {/if}
-   
-
-</div>
+  </div>
+{/if}

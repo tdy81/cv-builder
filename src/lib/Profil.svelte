@@ -1,34 +1,15 @@
 <script>
-    import { marked } from 'marked'
-
-    export let dataProfil;
-    export let showEdit;
-    export let showCollapse;
-
-    function editItem() {
-        showCollapse = !showCollapse;
-    }
+    export let infos;
 </script>
 
-    <h2>Profil</h2>
-    {#if showEdit}
-        <button on:click={editItem}>
-            collapse
-        </button>
-    {/if}
-
-    {#if showCollapse}
+{#each infos as item, index} 
+{#if item.desc}
+<div class="mb-8">
+    <div class="text-lg font-bold mb-2">Profil</div>
+    <div class="w-4 h-0.5 bg-black mb-4 theme-sep"></div>
     <div>
-
-        {#if !showEdit}
-        <div>{@html marked(dataProfil)}</div>
-        {/if}
-
-        {#if showEdit}
-        <div>
-            <label for="">Desc ( Enter + Enter saut de ligne)</label>
-            <textarea bind:value={dataProfil}></textarea>
-        </div>
-        {/if}
+        <div>{@html item.desc}</div>
     </div>
-    {/if}
+</div>
+{/if} 
+{/each}

@@ -1,163 +1,176 @@
 <script>
-  import html2pdf from 'html2pdf.js'
-  import Infos from './lib/Infos.svelte'
-  import Profil from './lib/Profil.svelte'
-  import Langs from './lib/Langs.svelte'
-  import Master from './lib/Master.svelte'
-  import Xp from './lib/Xp.svelte'
-  import Skills from './lib/Skills.svelte'
+import Nav from './lib/Nav.svelte';
+import FormSettings from './lib/FormSettings.svelte';
+import FormInfos from './lib/FormInfos.svelte';
+import Infos from './lib/Infos.svelte';
+import Contact from './lib/Contact.svelte';
+import Profil from './lib/Profil.svelte';
+import FormXp from './lib/FormXp.svelte';
+import Xp from './lib/Xp.svelte';
+import FormMs from './lib/FormMs.svelte';
+import Masters from './lib/Masters.svelte';
+import FormSkills from './lib/FormSkills.svelte';
+import Skills from './lib/Skills.svelte';
+import FormLangs from './lib/FormLangs.svelte';
+import Langs from './lib/Langs.svelte';
+import FormInterests from './lib/FormInterests.svelte';
+import Interests from './lib/Interests.svelte';
 
-  async function handlePrint() {
+// TAB
+let currentTab = 5;
 
-      const h = document.querySelectorAll('.remove-pdf');
+// SETTINGS
+let settingsType = 0;
+let settingsTheme = "theme-1";
+let settingsFont = "font-serif";
 
-      for (let i = 0; i < h.length; i++) {
-        h[i].style.display = "none";
-      }
-
-
-      const element = document.getElementById('print');
-      var opt = {
-        margin: 0,
-        html2canvas: { scale: 0.5 }
-      };
-      html2pdf().set().from(element).save();
-  }
-
-  // DATAS INFOS
-  let dataInfos = {
-    name: 'Tdy81',
-    job: 'Dévelopeur front-end',
-    age: '42 ans',
-    address: 'Paris, France',
-    email: 'email@contact.com',
-    phone: '06.01.02.03.04',
-    media: './avatar.jpg'
-  }
-
-// DATAS PROFIL
-let dataProfil = "Je suis développeur front-end, 10 ans d'expérience à mon actif. J'ai collaboré sur divers projets digitaux pour de nombreux clients grands comptes issus de domaines variés. Ces expériences m'ont permis d'approfondir mes connaissances sur les différents aspects du développement Web: sites, applications, emails, builders, responsive design, animations, Wordpress..."
-
-  // DATAS LANGUAGES
-let dataLangs = [
+// INFOS
+let infos = [
   {
-    name: "Anglais",
+    name: 'John Doe',
+    job: 'Développeur Front-end',
+    address : '2 imp du Moulin de la Seine',
+    cp : '77310',
+    city : 'St Fargeau Ponthierry',
+    email : 'bugra.teddy@gmail.com',
+    phone : '06 84 07 28 57',
+    avatar: '',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
   }
 ]
 
-// DATAS SKILLS
-let dataSkills = [
+// XP
+let xps = [
   {
-    name: "HTML",
+    job: "Développeur Front-End",
+    location: "Glucoz, Paris",
+    dateStart: "2009",
+    dateEnd: "aujourd'hui",
+    desc: "- Développer des applications web au sein d'une équipe agile\n- HTML, CSS, JS, GSAP, Wordpress, Twig, GIT, Figma, Adobe\n- Gestion de projets",
+    show: false,
   },
   {
-    name: "CSS / SCSS",
+    job: "Développeur Front-End",
+    location: "Glucoz, Paris",
+    dateStart: "2009",
+    dateEnd: "2015",
+    desc: "- Développer des applications web au sein d'une équipe agile\n- HTML, CSS, JS, GSAP, Wordpress, Twig, GIT, Figma, Adobe\n- Gestion de projets",
+    show: false,
   },
   {
-    name: "Javascript",
+    job: "Développeur Front-End",
+    location: "Glucoz, Paris",
+    dateStart: "2009",
+    dateEnd: "1015",
+    desc: "- Développer des applications web au sein d'une équipe agile\n- HTML, CSS, JS, GSAP, Wordpress, Twig, GIT, Figma, Adobe\n- Gestion de projets",
+    show: false,
   },
   {
-    name: "notions PHP",
-  },
-  {
-    name: "notions Twig",
-  },
-  {
-    name: "Wordpress",
-  },
-  {
-    name: "Bundlers",
-  },
-  {
-    name: "Photoshop / Figma",
+    job: "Développeur Front-End",
+    location: "Glucoz, Paris",
+    dateStart: "2009",
+    dateEnd: "1015",
+    desc: "- Développer des applications web au sein d'une équipe agile\n- HTML, CSS, JS, GSAP, Wordpress, Twig, GIT, Figma, Adobe\n- Gestion de projets",
+    show: true,
   }
 ]
 
-// DATAS XP
-let dataXp = [
+// MASTER
+let masters = [
   {
-    name: "Développeur Front-end",
-    place: "Freelance, Paris",
-    date: "2019, présent",
-    desc: "- Développement front dans une équipe agile utilisant les technologies HTML, CSS, JS",
+    title: "Formation Intégrateur Web",
+    location: "Paris",
+    dateStart: "2008",
+    dateEnd: "2009",
+    show: true,
   },
   {
-    name: "Développeur Front-end",
-    place: "Glucoz, Paris",
-    date: "2017, 2019",
-    desc: "- Développement front dans une équipe agile utilisant les technologies HTML, CSS, JS",
+    title: "Formation UX Designer",
+    location: "Paris",
+    dateStart: "2007",
+    dateEnd: "2008",
+    show: true,
   },
   {
-    name: "Développeur Front-end",
-    place: "Freelance, Paris",
-    date: "2009, 2016",
-    desc: "- Développement front dans une équipe agile utilisant les technologies HTML, CSS, JS",
-  },
-  {
-    name: "Graphiste / Régisseur",
-    place: "Atelier Audiovisuel de Barbizon, Barbizon",
-    date: "2003, 2007",
-    desc: "- Collaboration avec une équipe créative pour développer des concepts audioviuels uniques",
+    title: "BAC S",
+    location: "Paris",
+    dateStart: "2006",
+    dateEnd: "2007",
+    show: true,
   }
 ]
 
-// DATAS MASTER
-let dataMaster = [
-  {
-    name: "Intégrateur Web",
-    place: "Gréta Tertiaire 77, Melun",
-    date: "2007 - 2028",
-    desc: "",
-  },
-  {
-    name: "Graphiste PAO",
-    place: "Gréta Tertiaire 77, Fontainebleau",
-    date: "2001 - 2002",
-    desc: "",
-  },
-  {
-    name: "Brevet des métiers d'art graphisme",
-    place: "Lycée Professionnel Congis sur therouanne",
-    date: "1997 - 1999",
-    desc: "",
-  }
+// SKILLS
+let skills = [
+  {name: 'Polyvalence', show: false},
+  {name: 'Esprit d’équipe', show: false},
+  {name: 'Autonomie', show: false},
+  {name: 'Sens de l’organisation', show: true}
 ]
-  
+
+// LANGS
+let langs = [
+  {name: 'Français', show: true},
+  {name: 'Anglais', show: true},
+]
+
+// INTERETS
+let interests = [
+  {name: 'Sport', show: true},
+  {name: 'Cinéma', show: true},
+  {name: 'Musique instrument', show: true},
+]
+
 </script>
 
-<div>
-  <h1 style="padding: 30px;" class="remove-pdf">CV Builder - Svelte.js</h1>
-  <div id="print">
+<div class="fixed top-0 left-0 w-24 h-full px-4 py-8 flex flex-col items-center">
+  <Nav bind:currentTab />
+</div>
 
-    <div id="app-content">
-
-      <Infos bind:dataInfos showEdit={false} showCollapse={true} />
-
-      <div class="row">
-        <div class="col">
-          <Profil bind:dataProfil showEdit={false} showCollapse={true} />
-          <br>
-          <Skills bind:dataSkills showEdit={false} showCollapse={true} />
-        </div>
-        <div class="col">
-          <Xp bind:dataXp showEdit={false} showCollapse={true}/>
-        </div>
-        <div class="col">
-          <Master bind:dataMaster showEdit={false} showCollapse={true}/>
-          <Langs bind:dataLangs showEdit={false} showCollapse={true}/>
+<div class="ml-24">
+  <div class="flex flex-row">
+    <div class="basis-1/3 py-8 px-4 h-screen overflow-auto">
+      {#if currentTab === 5}
+        <FormSettings bind:settingsType bind:settingsTheme bind:settingsFont bind:currentTab />
+      {:else if currentTab === 0}
+        <FormInfos bind:infos bind:currentTab />
+      {:else if currentTab === 1}
+        <FormXp bind:xps bind:currentTab />
+      {:else if currentTab === 2}
+        <FormMs bind:masters bind:currentTab />
+      {:else if currentTab === 3}
+        <FormSkills bind:skills bind:currentTab /> 
+      {:else if currentTab === 6}
+        <FormLangs bind:langs bind:currentTab />        
+      {:else if currentTab === 7}
+        <FormInterests bind:interests bind:currentTab /> 
+      {/if}
+    </div>
+    <div class="basis-2/3 py-8 px-4">
+      <div id="app-preview" class="border rounded-lg">
+        <div id="wrap-preview" class="{settingsTheme} {settingsFont}">
+          {#if settingsType === 0}
+            <div class="flex">
+              <div class="basis-2/3 p-4">
+                <Infos bind:infos />
+                <Profil bind:infos />
+                <Xp bind:xps />
+              </div>
+              <div class="basis-1/3 p-4">
+                <Contact bind:infos />
+                <Skills bind:skills />
+                <Masters bind:masters />
+                <Langs bind:langs />
+                <Interests bind:interests />
+              </div>
+            </div>  
+          {:else if settingsType === 1} 
+            <div class="p-4">Theme Standard</div>  
+          {:else if settingsType === 2} 
+            <div class="p-4">Theme Graphique</div>        
+          {/if}
         </div>
       </div>
     </div>
-
-    <div id="app-sidebar" class="remove-pdf">
-      <button class="btn-pdf" on:click={handlePrint}>Download PDF</button>
-      <Infos bind:dataInfos showEdit={true} showCollapse={false} />
-      <Profil bind:dataProfil showEdit={true} showCollapse={false} />
-      <Skills bind:dataSkills showEdit={true} showCollapse={false}/>
-      <Xp bind:dataXp showEdit={true} showCollapse={false}/>
-      <Master bind:dataMaster showEdit={true} showCollapse={false}/>
-      <Langs bind:dataLangs showEdit={true} showCollapse={false}/>
-    </div>
-
   </div>
 </div>

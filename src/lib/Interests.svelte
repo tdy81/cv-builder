@@ -1,13 +1,13 @@
 <script>
-  export let skills;
+  export let interests;
 </script>
 
-{#if skills.length}
+{#if interests.length}
 <div class="mb-8">
-  <div class="text-lg font-bold mb-2">Compétences</div>
+  <div class="text-lg font-bold mb-2">Centres d'intérêt</div>
   <div class="w-4 h-0.5 bg-black mb-4 theme-sep"></div>
   <ul>
-    {#each skills as item, index}
+    {#each interests as item, index}
     <li>- {item.name}</li>
     {/each}
   </ul>

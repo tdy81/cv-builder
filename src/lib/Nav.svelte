@@ -1,0 +1,41 @@
+<script>
+import html2pdf from 'html2pdf.js'   
+export let currentTab;
+
+function tabShow(el) {
+  currentTab = el
+}
+
+async function handlePrint() {
+  const element = document.getElementById('wrap-preview');
+
+  var opt = {
+    margin: 0,
+    filename: 'cv.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: { scale: 4 }
+  };
+  html2pdf().set(opt).from(element).save();
+}
+</script>
+
+<nav>
+  <button class="flex items-center justify-center rounded-full border hover:border-black hover:bg-black hover:fill-white w-16 h-16 my-2 {currentTab === 5 ? 'bg-black fill-white' : ''}" on:click={() => tabShow(5)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"><path d="M20,8.18V3a1,1,0,0,0-2,0V8.18a3,3,0,0,0,0,5.64V21a1,1,0,0,0,2,0V13.82a3,3,0,0,0,0-5.64ZM19,12a1,1,0,1,1,1-1A1,1,0,0,1,19,12Zm-6,2.18V3a1,1,0,0,0-2,0V14.18a3,3,0,0,0,0,5.64V21a1,1,0,0,0,2,0V19.82a3,3,0,0,0,0-5.64ZM12,18a1,1,0,1,1,1-1A1,1,0,0,1,12,18ZM6,6.18V3A1,1,0,0,0,4,3V6.18a3,3,0,0,0,0,5.64V21a1,1,0,0,0,2,0V11.82A3,3,0,0,0,6,6.18ZM5,10A1,1,0,1,1,6,9,1,1,0,0,1,5,10Z"></path></svg></button>
+  <button class="flex items-center justify-center rounded-full border hover:border-black hover:bg-black hover:fill-white w-16 h-16 my-2 {currentTab === 0 ? 'bg-black fill-white' : ''}" on:click={() => tabShow(0)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"><path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z"></path></svg></button>
+  <button class="flex items-center justify-center rounded-full border hover:border-black hover:bg-black hover:fill-white w-16 h-16 my-2 {currentTab === 1 ? 'bg-black fill-white' : ''}" on:click={() => tabShow(1)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"><path d="M19,6.5H16v-1a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v1H5a3,3,0,0,0-3,3v9a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-9A3,3,0,0,0,19,6.5Zm-9-1a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1v1H10Zm10,13a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V13.45H7V14.5a1,1,0,0,0,2,0V13.45h6V14.5a1,1,0,0,0,2,0V13.45h3Zm0-7H4V9.5a1,1,0,0,1,1-1H19a1,1,0,0,1,1,1Z"></path></svg></button>
+  <button class="flex items-center justify-center rounded-full border hover:border-black hover:bg-black hover:fill-white w-16 h-16 my-2 {currentTab === 2 ? 'bg-black fill-white' : ''}" on:click={() => tabShow(2)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"><path d="M21.49,10.19l-1-.55h0l-9-5-.11,0a1.06,1.06,0,0,0-.19-.06l-.19,0-.18,0a1.17,1.17,0,0,0-.2.06l-.11,0-9,5a1,1,0,0,0,0,1.74L4,12.76V17.5a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V12.76l2-1.12V14.5a1,1,0,0,0,2,0V11.06A1,1,0,0,0,21.49,10.19ZM16,17.5a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V13.87l4.51,2.5.15.06.09,0a1,1,0,0,0,.25,0h0a1,1,0,0,0,.25,0l.09,0a.47.47,0,0,0,.15-.06L16,13.87Zm-5-3.14L4.06,10.5,11,6.64l6.94,3.86Z"></path></svg></button>
+  <button class="flex items-center justify-center rounded-full border hover:border-black hover:bg-black hover:fill-white w-16 h-16 my-2 {currentTab === 3 ? 'bg-black fill-white' : ''}" on:click={() => tabShow(3)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"><path d="M5,12a1,1,0,0,0-1,1v8a1,1,0,0,0,2,0V13A1,1,0,0,0,5,12ZM10,2A1,1,0,0,0,9,3V21a1,1,0,0,0,2,0V3A1,1,0,0,0,10,2ZM20,16a1,1,0,0,0-1,1v4a1,1,0,0,0,2,0V17A1,1,0,0,0,20,16ZM15,8a1,1,0,0,0-1,1V21a1,1,0,0,0,2,0V9A1,1,0,0,0,15,8Z"></path></svg></button>
+  <button class="flex items-center justify-center rounded-full border hover:border-black hover:bg-black hover:fill-white w-16 h-16 my-2 {currentTab === 6 ? 'bg-black fill-white' : ''}" on:click={() => tabShow(6)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"><path d="M21.41,8.64s0,0,0-.05a10,10,0,0,0-18.78,0s0,0,0,.05a9.86,9.86,0,0,0,0,6.72s0,0,0,.05a10,10,0,0,0,18.78,0s0,0,0-.05a9.86,9.86,0,0,0,0-6.72ZM4.26,14a7.82,7.82,0,0,1,0-4H6.12a16.73,16.73,0,0,0,0,4Zm.82,2h1.4a12.15,12.15,0,0,0,1,2.57A8,8,0,0,1,5.08,16Zm1.4-8H5.08A8,8,0,0,1,7.45,5.43,12.15,12.15,0,0,0,6.48,8ZM11,19.7A6.34,6.34,0,0,1,8.57,16H11ZM11,14H8.14a14.36,14.36,0,0,1,0-4H11Zm0-6H8.57A6.34,6.34,0,0,1,11,4.3Zm7.92,0h-1.4a12.15,12.15,0,0,0-1-2.57A8,8,0,0,1,18.92,8ZM13,4.3A6.34,6.34,0,0,1,15.43,8H13Zm0,15.4V16h2.43A6.34,6.34,0,0,1,13,19.7ZM15.86,14H13V10h2.86a14.36,14.36,0,0,1,0,4Zm.69,4.57a12.15,12.15,0,0,0,1-2.57h1.4A8,8,0,0,1,16.55,18.57ZM19.74,14H17.88A16.16,16.16,0,0,0,18,12a16.28,16.28,0,0,0-.12-2h1.86a7.82,7.82,0,0,1,0,4Z"></path></svg></button>
+  <button class="flex items-center justify-center rounded-full border hover:border-black hover:bg-black hover:fill-white w-16 h-16 my-2 {currentTab === 7 ? 'bg-black fill-white' : ''}" on:click={() => tabShow(7)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"><path d="M20.07,6.11a9.85,9.85,0,0,0-4.3-3.36A10,10,0,0,0,2,12c0,.19,0,.38,0,.56A9.94,9.94,0,0,0,3.33,17a10,10,0,0,0,5.89,4.65h0A10.11,10.11,0,0,0,12,22a9.45,9.45,0,0,0,1.88-.18,10,10,0,0,0,8-8.41A9.46,9.46,0,0,0,22,12,9.83,9.83,0,0,0,20.07,6.11Zm-2,.77L17,9.74l-1.62.44L13,8.49V6.64l2.49-1.81A7.81,7.81,0,0,1,18.11,6.88ZM14,11.67,13.22,14H10.77L10,11.67l2-1.43ZM12,4a8,8,0,0,1,1.11.09L12,4.89l-1.11-.8A8,8,0,0,1,12,4ZM4.88,8.37l.4,1.32-1.13.79A7.88,7.88,0,0,1,4.88,8.37Zm1.37,9.17,1.38.05L8,18.92A8.32,8.32,0,0,1,6.25,17.54ZM8,15.6l-3.15-.11A7.83,7.83,0,0,1,4.07,13l2.49-1.74L8,11.88l.89,2.76Zm.86-5.53-1.56-.7-.91-3A7.93,7.93,0,0,1,8.5,4.83L11,6.64V8.49ZM13,19.93a8.08,8.08,0,0,1-2.63-.12l-.83-2.92.83-.89h3.07l.67,1Zm2.41-.7L15.87,18l1.36.07A7.83,7.83,0,0,1,15.38,19.23Zm3.46-3.12L15.76,16l-.71-1.1.89-2.76,1.51-.41,2.36,2A7.84,7.84,0,0,1,18.84,16.11Zm.05-5.83L19.4,9a7.4,7.4,0,0,1,.53,2.13Z"></path></svg></button>
+  <button class="flex items-center justify-center rounded-full border hover:border-black hover:bg-black hover:text-white w-16 h-16 my-2" on:click={handlePrint}>PDF</button>
+</nav>
+
+<style>
+  /*svg {
+    fill: #000;
+  }
+  button:hover svg,
+  button.bg-black svg {
+    fill: white;
+  }*/
+</style>
