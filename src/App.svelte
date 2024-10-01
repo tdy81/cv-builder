@@ -15,6 +15,7 @@ import FormLangs from './lib/FormLangs.svelte';
 import Langs from './lib/Langs.svelte';
 import FormInterests from './lib/FormInterests.svelte';
 import Interests from './lib/Interests.svelte';
+import FormCheckout from './lib/FormCheckout.svelte';
 
 // TAB
 let currentTab = 5;
@@ -121,8 +122,8 @@ let interests = [
 </div>
 
 <div class="ml-24">
-  <div class="flex flex-row">
-    <div class="basis-1/3 py-8 px-4 h-screen overflow-auto">
+  <div class="lg:flex">
+    <div class="lg:basis-1/3 py-8 px-4 lg:h-screen overflow-auto">
       {#if currentTab === 5}
         <FormSettings bind:settingsType bind:settingsFont bind:currentTab />
       {:else if currentTab === 0}
@@ -137,9 +138,11 @@ let interests = [
         <FormLangs bind:langs bind:currentTab />        
       {:else if currentTab === 7}
         <FormInterests bind:interests bind:currentTab /> 
+      {:else if currentTab === 8}
+        <FormCheckout bind:currentTab /> 
       {/if}
     </div>
-    <div class="basis-2/3 py-8 px-4">
+    <div class="lg:basis-2/3 py-8 px-4">
       <div id="app-preview" class="border rounded-lg">
         <div id="wrap-preview" class="type-{settingsType} {settingsTheme} {settingsFont}">
           {#if settingsType === 0}

@@ -6,7 +6,7 @@
 
 {#each infos as item, index}
 <div class="bloc-infos mb-8">
-  <div class="w-24 h-24 rounded-full overflow-hidden mb-4 avatar">
+  <div class="w-24 h-24 rounded-full overflow-hidden mb-4 avatar bg-slate-100">
     {#if item.avatar}
       <img class="object-cover h-full w-full" src="{item.avatar}" alt="" />
     {:else}

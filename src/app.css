@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 #app-preview {
-    width: 21cm;
-    height: 29.7cm;
+    max-width: 21cm;
+    min-height: 29.7cm;
 }
 
 /*#wrap-preview {
