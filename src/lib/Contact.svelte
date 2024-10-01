@@ -3,9 +3,9 @@
 </script>
 
 {#each infos as item, index}
-<div class="mb-8">
-  <div class="text-lg font-bold mb-2">Contact</div>
-  <div class="w-4 h-0.5 bg-black mb-4 theme-sep"></div>
+<div class="bloc-contact mb-8">
+  <div class="text-lg font-bold mb-2 title">Contact</div>
+  <div class="w-4 h-0.5 bg-black mb-4 sep"></div>
   <div>
     <div>T : {item.phone}</div>
     <div>E : {item.email}</div>

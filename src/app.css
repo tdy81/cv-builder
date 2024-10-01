@@ -11,8 +11,13 @@
     font-family: serif;
 }*/
 
-.theme-2 .theme-sep {
-    background-color: rgb(250 204 21);
+.type-1 .col-left .sep {
+    margin-left: auto;
+}
+
+.type-1 .bloc-contact .title,
+.type-1 .bloc-contact .sep {
+    display: none;
 }
 
 .font-serif {

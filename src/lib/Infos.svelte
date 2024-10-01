@@ -5,8 +5,8 @@
 </script>
 
 {#each infos as item, index}
-<div class="mb-8">
-  <div class="w-24 h-24 rounded-full overflow-hidden mb-4">
+<div class="bloc-infos mb-8">
+  <div class="w-24 h-24 rounded-full overflow-hidden mb-4 avatar">
     {#if item.avatar}
       <img class="object-cover h-full w-full" src="{item.avatar}" alt="" />
     {:else}

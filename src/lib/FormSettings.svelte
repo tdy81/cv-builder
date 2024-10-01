@@ -1,6 +1,6 @@
 <script>
     export let settingsType;
-    export let settingsTheme;
+    //export let settingsTheme;
     export let settingsFont;    
     export let currentTab;
 	
@@ -8,9 +8,9 @@
 		settingsType = parseFloat(event.currentTarget.value);
 	}
 
-    function onChangeTheme(event) {
+    /*function onChangeTheme(event) {
         settingsTheme = event.currentTarget.value;
-	}
+	}*/
 
     function onChangeFont(event) {
         settingsFont = event.currentTarget.value;
@@ -29,23 +29,23 @@
             <div class="mr-8">
                 <label>
                     <input on:change={onChangeType} type="radio" name="amount" value="0" checked /> 
-                    Minimal
+                    Type 1
                 </label>
             </div>
             <div class="mr-8">
                 <label>
                     <input on:change={onChangeType} type="radio" name="amount" value="1" /> 
-                    Standard
+                    Type 2
                 </label>
             </div>
             <div class="mr-8">
                 <label>
                     <input on:change={onChangeType} type="radio" name="amount" value="2" /> 
-                    Graphique
+                    Type 3
                 </label>
             </div>
         </div>
-        <div class="font-bold mb-4">Thèmes</div>
+        <!--<div class="font-bold mb-4">Thèmes</div>
         <div class="flex mb-8">
             <div class="mr-8">
                 <label>
@@ -59,7 +59,7 @@
                     Highlight
                 </label>
             </div>
-        </div>
+        </div>-->
         <div class="font-bold mb-4">Fonts</div>
         <div class="flex mb-8">
             <div class="mr-8">

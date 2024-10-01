@@ -28,12 +28,12 @@ let settingsFont = "font-serif";
 let infos = [
   {
     name: 'John Doe',
-    job: 'Développeur Front-end',
-    address : '2 imp du Moulin de la Seine',
-    cp : '77310',
-    city : 'St Fargeau Ponthierry',
-    email : 'bugra.teddy@gmail.com',
-    phone : '06 84 07 28 57',
+    job: 'Senior UX Designer',
+    address : 'Numéro et Nom de rue',
+    cp : 'Code postal',
+    city : 'Ville',
+    email : 'hello@gmail.com',
+    phone : '06 00 00 00 00',
     avatar: '',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
   }
@@ -42,35 +42,35 @@ let infos = [
 // XP
 let xps = [
   {
-    job: "Développeur Front-End",
-    location: "Glucoz, Paris",
-    dateStart: "2009",
-    dateEnd: "aujourd'hui",
-    desc: "- Développer des applications web au sein d'une équipe agile\n- HTML, CSS, JS, GSAP, Wordpress, Twig, GIT, Figma, Adobe\n- Gestion de projets",
+    job: "Nom de métier",
+    location: "Nom de l'entreprise, Paris",
+    dateStart: "2020",
+    dateEnd: "2024",
+    desc: "- Lorem ipsum dolor sit amet, consectetur adipiscing elit\n- Donec posuere nisl quis bibendum pretium.\n- Aliquam sit amet ante vel risus fermentum mollis.",
     show: false,
   },
   {
-    job: "Développeur Front-End",
-    location: "Glucoz, Paris",
-    dateStart: "2009",
-    dateEnd: "2015",
-    desc: "- Développer des applications web au sein d'une équipe agile\n- HTML, CSS, JS, GSAP, Wordpress, Twig, GIT, Figma, Adobe\n- Gestion de projets",
+    job: "Nom de métier",
+    location: "Nom de l'entreprise, Paris",
+    dateStart: "2020",
+    dateEnd: "2024",
+    desc: "- Lorem ipsum dolor sit amet, consectetur adipiscing elit\n- Donec posuere nisl quis bibendum pretium.\n- Aliquam sit amet ante vel risus fermentum mollis.",
     show: false,
   },
   {
-    job: "Développeur Front-End",
-    location: "Glucoz, Paris",
-    dateStart: "2009",
-    dateEnd: "1015",
-    desc: "- Développer des applications web au sein d'une équipe agile\n- HTML, CSS, JS, GSAP, Wordpress, Twig, GIT, Figma, Adobe\n- Gestion de projets",
+    job: "Nom de métier",
+    location: "Nom de l'entreprise, Paris",
+    dateStart: "2020",
+    dateEnd: "2024",
+    desc: "- Lorem ipsum dolor sit amet, consectetur adipiscing elit\n- Donec posuere nisl quis bibendum pretium.\n- Aliquam sit amet ante vel risus fermentum mollis.",
     show: false,
   },
   {
-    job: "Développeur Front-End",
-    location: "Glucoz, Paris",
-    dateStart: "2009",
-    dateEnd: "1015",
-    desc: "- Développer des applications web au sein d'une équipe agile\n- HTML, CSS, JS, GSAP, Wordpress, Twig, GIT, Figma, Adobe\n- Gestion de projets",
+    job: "Nom de métier",
+    location: "Nom de l'entreprise, Paris",
+    dateStart: "2020",
+    dateEnd: "2024",
+    desc: "- Lorem ipsum dolor sit amet, consectetur adipiscing elit\n- Donec posuere nisl quis bibendum pretium.\n- Aliquam sit amet ante vel risus fermentum mollis.",
     show: true,
   }
 ]
@@ -90,21 +90,14 @@ let masters = [
     dateStart: "2007",
     dateEnd: "2008",
     show: true,
-  },
-  {
-    title: "BAC S",
-    location: "Paris",
-    dateStart: "2006",
-    dateEnd: "2007",
-    show: true,
   }
 ]
 
 // SKILLS
 let skills = [
-  {name: 'Polyvalence', show: false},
+  {name: 'Polyvalent', show: false},
   {name: 'Esprit d’équipe', show: false},
-  {name: 'Autonomie', show: false},
+  {name: 'Autonome', show: false},
   {name: 'Sens de l’organisation', show: true}
 ]
 
@@ -118,7 +111,7 @@ let langs = [
 let interests = [
   {name: 'Sport', show: true},
   {name: 'Cinéma', show: true},
-  {name: 'Musique instrument', show: true},
+  {name: 'Musique', show: true},
 ]
 
 </script>
@@ -131,7 +124,7 @@ let interests = [
   <div class="flex flex-row">
     <div class="basis-1/3 py-8 px-4 h-screen overflow-auto">
       {#if currentTab === 5}
-        <FormSettings bind:settingsType bind:settingsTheme bind:settingsFont bind:currentTab />
+        <FormSettings bind:settingsType bind:settingsFont bind:currentTab />
       {:else if currentTab === 0}
         <FormInfos bind:infos bind:currentTab />
       {:else if currentTab === 1}
@@ -148,15 +141,15 @@ let interests = [
     </div>
     <div class="basis-2/3 py-8 px-4">
       <div id="app-preview" class="border rounded-lg">
-        <div id="wrap-preview" class="{settingsTheme} {settingsFont}">
+        <div id="wrap-preview" class="type-{settingsType} {settingsTheme} {settingsFont}">
           {#if settingsType === 0}
             <div class="flex">
-              <div class="basis-2/3 p-4">
+              <div class="basis-2/3 p-4 col-left">
                 <Infos bind:infos />
                 <Profil bind:infos />
                 <Xp bind:xps />
               </div>
-              <div class="basis-1/3 p-4">
+              <div class="basis-1/3 p-4 col-right">
                 <Contact bind:infos />
                 <Skills bind:skills />
                 <Masters bind:masters />
@@ -165,9 +158,41 @@ let interests = [
               </div>
             </div>  
           {:else if settingsType === 1} 
-            <div class="p-4">Theme Standard</div>  
+          <div class="flex items-end">
+            <div class="basis-1/3 p-4 text-right col-left">
+              <Contact bind:infos />
+            </div>
+            <div class="basis-2/3 p-4 col-right">
+              <Infos bind:infos />
+            </div>
+          </div>
+          <div class="flex">
+            <div class="basis-1/3 p-4 text-right col-left">
+              <Masters bind:masters />
+              <Skills bind:skills />
+              <Langs bind:langs />
+              <Interests bind:interests />
+            </div>
+            <div class="basis-2/3 p-4 col-right">
+              <Profil bind:infos />
+              <Xp bind:xps />
+            </div>
+          </div>  
           {:else if settingsType === 2} 
-            <div class="p-4">Theme Graphique</div>        
+          <div class="flex">
+            <div class="basis-1/3 p-4 col-left">
+              <Infos bind:infos />
+              <Contact bind:infos />
+              <Skills bind:skills />
+              <Langs bind:langs />
+              <Interests bind:interests />
+            </div>
+            <div class="basis-2/3 p-4 col-right">
+              <Profil bind:infos />
+              <Xp bind:xps />
+              <Masters bind:masters />
+            </div>
+          </div>   
           {/if}
         </div>
       </div>
